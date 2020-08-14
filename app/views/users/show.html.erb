@@ -1,0 +1,65 @@
+<p>相談者様詳細情報</p>
+<p>ニックネーム:<%= @user.nickname %></p>
+<p>年齢:<%= @user.age %></p>
+<p>性別:<%= @user.sex %></p>
+<p>ご相談内容:<%= @user.counseling %></p>
+<%= link_to "一覧へ", users_path %>
+<%= link_to "amazon(医薬品全般)", "http://urx3.nu/Z4qC" %>
+<%= link_to "削除", user_path(@user.id), method: :delete, data: {confirm: "削除しますか?"} %>
+<%= link_to "編集", edit_user_path(@user.id) %>
+<h3>おすすめ商品をご案内します！</h3>
+<% case @user.sick %>
+<% when "cough" %>
+<%= "#{@user.nickname}さんはストナプラスジェルSはいかがでしょうか。" %>
+<%= link_to "amazonで買う", "http://urx3.nu/VpLu" %>
+<% when "fever" %>
+<%= "#{@user.nickname}さんはルルアタックFXはいかがでしょうか。" %>
+<%= link_to "amazonで買う", "http://urx3.nu/7OOW" %>
+<% when "sore_throat" %>
+<%= "#{@user.nickname}さんはルルアタックEXはいかがでしょうか。" %>
+<%= link_to "amazonで買う", "http://urx3.nu/7OOW" %>
+<% when "sneeze" %>
+<%= "#{@user.nickname}さんはルルアタックNXはいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx3.nu/7OOW" %>
+<% when "headache" %>
+<%= "#{@user.nickname}さんはリングルアイビー200はいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx3.nu/rYw8" %>
+<% when "dental_pain" %>
+<%= "#{@user.nickname}さんはリングルアイビー200はいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx3.nu/rYw8" %>
+<% when "stomachache" %>
+<%= "#{@user.nickname}さんはパンシロンAZはいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx3.nu/SuJT" %>
+<% when "stodginess" %>
+<%= "#{@user.nickname}さんは大正漢方胃腸薬はいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx3.nu/XGjU" %>
+<% when "stodginess" %>
+<%= "#{@user.nickname}さんは大正漢方胃腸薬はいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx3.nu/XGjU" %>
+<% when "something_rolling_around_in_my_eye" %>
+<%= "#{@user.nickname}さんはロート抗菌目薬はいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx.red/RH5k" %>
+<% when "stye" %>
+<%= "#{@user.nickname}さんはロート抗菌目薬はいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx.red/RH5k" %>
+<% when "eyestrain" %>
+<%= "#{@user.nickname}さんはナボリン錠はいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://ur0.work/YRvr" %>
+<% when "ones_back_hurts" %>
+<%= "#{@user.nickname}さんはボルタレンテープはいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx.blue/ZiLU" %>
+<% when "shoulder_pain" %>
+<%= "#{@user.nickname}さんはボルタレンゲルはいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx.blue/pSwQ" %>
+<% when "can_not_sleeping" %>
+<%= "#{@user.nickname}さんはドリエルはいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx.blue/eUwZ" %>
+<% when "can_not_sleeping" %>
+<%= "#{@user.nickname}さんはドリエルはいかがでしょうか" %>
+<%= link_to "amazonで買う", "http://urx.blue/eUwZ" %>
+<% else %>
+<%= "不正な値です" %>
+<% end %>
+
+
+   

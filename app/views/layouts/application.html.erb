@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OtcDrug</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <% flash.each do |flash_type, msg| %>
+    <p style="color: <%= flash_type == 'notice' ? 'green' : 'red' %>;"><%= msg %></p>
+    <hr>
+    <% end %>
+    <%= yield %>
+    <div class="p-3 mb-2 bg-info text-white">©お薬ご提案アプリ2020 powered by koichi hatano</div>
+  </body>
+</html>

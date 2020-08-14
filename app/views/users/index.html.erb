@@ -1,0 +1,19 @@
+<h3>お薬ご提案アプリ</h3>
+  
+  <% if user_signed_in? %>
+  <p>
+   <% @users.each do |user| %>
+  <p>ニックネーム:<%= user.nickname %></p>
+  <p>年齢:<%= user.age %></p>
+  <p>性別:<%= user.sex %></p>
+   <%= link_to "新規情報投稿", new_user_path %> 
+   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+   <%= link_to "相談者様詳細情報へ", user_path(user.id) %>
+  <% end %>
+  </p>  
+   <% else %>
+  <h3>現在ログインされてません。恐れいりますが、ログインお願いします</h3>
+   <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+   <%= link_to "新規登録", new_user_registration_path, class: 'post' %> 
+   <% end %>
+  
