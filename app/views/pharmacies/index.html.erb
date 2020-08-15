@@ -1,0 +1,11 @@
+<h3>お客様一覧</h3>
+  <% if user_signed_in? %>
+  <% @pharmacies.each do |pharmacy| %>
+   <p>ニックネーム:<%= pharmacy.nickname %></p>
+   <p>年齢:<%= pharmacy.age %></p>
+   <p>性別:<%= pharmacy.sex %></p>
+  <p>会員No.<%= pharmacy.user.id %></p>
+  <% end %>
+  <% else %>
+  <p>恐れいりますが、ログインお願いします</p>
+  <% end %>
