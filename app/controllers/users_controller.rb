@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
-   
-    def index
-        @users = User.order(id: :asc)
+     before_action :move_to_index, except: :index
+    
+     def index
+       @users = User.all
     end
     
     def new
         @user = User.new
     end
 
-    def create
-        @user = User.new(user_params)
+     def create
+       @users = User.new(user_params)
           if @user.counseling.include?("熱")
                @user.sick = "fever"
                @user.save!
@@ -43,45 +44,24 @@ class UsersController < ApplicationController
           elsif @user.counseling.include?("胃が痛い")
                @user.sick = "stomachache"
                @user.save! 
-          elsif @user.counseling.include?("胃もたれ")
-               @user.sick = "stodginess"
-               @user.save!
-          elsif @user.counseling.include?("目がゴロゴロする")
-               @user.sick = "something_rolling_around_in_my_eye"
-               @user.save!
-          elsif @user.counseling.include?("ものもらい") 
-               @user.sick = "stye"  
-               @user.save!
-         elsif @user.counseling.include?("目が疲れる")
-               @user.sick = "eyestrain"
-               @user.save!
-         elsif @user.counseling.include?("腰が痛い")
-               @user.sick = "ones_back_hurts"
-               @user.save!
-         elsif @user.counseling.include?("肩が痛い")
-               @user.sick = "shoulder_pain"
-               @user.save!
-         elsif @user.counseling.include?("寝れない")
-               @user.sick = "can_not_sleeping"
-               @user.save!
-         elsif @user.counseling.include?("眠れない")   
-               @user.sick = "can_not_sleeping" 
-               @user.save!  
          else
            "不正な値です"
-         end
+          end
          if @user.save
             flash[:notice] = "登録が完了いたしました"
             redirect_to @user
          else
             flash.now[:danger] = "登録に失敗しました"
             render 'users/new'
-         end
-         
-    end
+        end
+     end
 
+      def move_to_index
+          redirect_to action: :index unless user_signed_in?
+    end
+    
     def show
-        @user = User.find(params[:id])
+       @user = User.find(params[:id])
     end
 
     def destroy
@@ -94,7 +74,7 @@ class UsersController < ApplicationController
 
     def edit
         @user = User.find(params[:id])
-    end
+     end
 
     def update
         @user = User.find(params[:id])
@@ -106,12 +86,11 @@ class UsersController < ApplicationController
          flash.now[:danger] = "更新に失敗しました"
          render 'users/edit'
       end
-        
-    end
-    
-    private
+
+      private
 
     def user_params
-        params.require(:user).permit(:nickname, :age, :sex, :counseling)
+        params.require(:user).permit(:nickname, :age, :sex, :counseling, :sick)
     end
+end
 end

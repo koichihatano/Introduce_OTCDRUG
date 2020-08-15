@@ -1,7 +1,8 @@
-<h3>新規登録編集ページ</h3>
+<h3>編集ページ</h3>
 <%= form_for @user, url: user_path(@user.id), html: { method: :patch } do |f| %>
 <p>ニックネーム:<%= f.text_field :nickname %></p>
 <p>年齢:<%= f.text_field :age %></p>
 <p>性別:<%= f.text_field :sex %></p>
+<p>ご相談内容:<%= f.text_field :counseling %></p>
 <input type="submit" value="送信">
 <% end %>
