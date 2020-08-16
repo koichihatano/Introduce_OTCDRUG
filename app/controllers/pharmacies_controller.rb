@@ -1,8 +1,8 @@
 class PharmaciesController < ApplicationController
-before_action :move_to_index, except: :index
-    
+before_action :authenticate_user!
+before_action :correct_user, only: %i[edit update destroy]    
      def index
-       @pharmacies = Pharmacy.all
+       @pharmacies = Pharmacy.includes(:user)
     end
     
     def new
@@ -10,7 +10,9 @@ before_action :move_to_index, except: :index
     end
 
      def create
-       @pharmacy = Pharmacy.new(pharmacy_params)
+          @pharmacy = Pharmacy.new(pharmacy_params)
+           @pharmacy.user_id = current_user.id
+           @pharmacy.save
           if @pharmacy.counseling.include?("熱")
                @pharmacy.sick = "fever"
                @pharmacy.save!
@@ -34,31 +36,29 @@ before_action :move_to_index, except: :index
           end
          if @pharmacy.save
             flash[:notice] = "登録が完了いたしました"
-            redirect_to @pharmacy
+            redirect_to root_path
          else
             flash.now[:danger] = "登録に失敗しました"
             render 'pharmacies/new'
         end
      end
-
-      def move_to_index
-          redirect_to action: :index unless user_signed_in?
-    end
     
 
     def destroy
-        @pharmacy = Pharmacy.find(params[:id])
         @pharmacy.destroy!
         flash[:notice] = "削除いたしました"
-         redirect_to @pharmacy
+         redirect_to root_path
     end
 
+    def show
+          @pharmacy = Pharmacy.find(params[:id])
+          @user = @pharmacy.user
+     end
+    
     def edit
-        @pharmacy = Pharmacy.find(params[:id])
      end
 
     def update
-        @pharmacy = Pharmacy.find(params[:id])
         @pharmacy.update!(pharmacy_params)
         if @pharmacy.update(pharmacy_params)
          flash[:notice] = "更新が完了いたしました" 
@@ -71,7 +71,11 @@ before_action :move_to_index, except: :index
       private
 
     def pharmacy_params
-        params.require(:pharmacy).permit(:nickname, :age, :sex, :counseling, :sick)
+        params.require(:pharmacy).permit(:nickname, :age, :sex, :counseling)
+    end
+    def correct_user
+        @pharmacy = current_user.pharmacies.find_by(id: params[:id])
+        redirect_to root_path if @pharmacy.nil?
     end
 end
 

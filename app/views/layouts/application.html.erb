@@ -10,16 +10,7 @@
   </head>
 
   <body>
-   <% if user_signed_in? %>
-   <%= link_to "新規情報投稿", new_pharmacy_path %> 
-   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-   <%= link_to 'マイページへ', user_path(current_user.id) %>
-   <%= link_to "トップ", pharmacies_path %>
-   <% else %>
-    <h3>現在ログインされてません。恐れいりますが、ログインお願いします</h3>
-    <%= link_to "ログイン", new_user_session_path %>
-    <%= link_to "新規登録", new_user_registration_path %>
-    <% end %>
+   <%= render 'shared/header' %>
    <% flash.each do |flash_type, msg| %>
     <p style="color: <%= flash_type == 'notice' ? 'green' : 'red' %>;"><%= msg %></p>
     <hr>

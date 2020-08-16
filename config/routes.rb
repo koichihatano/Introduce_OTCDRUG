@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'pharmacies#index'
   devise_for :users
   resources :pharmacies
+  root to: 'pharmacies#index'
   resources :users, only: :show
 end

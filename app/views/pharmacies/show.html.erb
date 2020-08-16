@@ -1,0 +1,19 @@
+  <p>ニックネーム:<%= pharmacy.nickname %></p>
+  <p>年齢:<%= pharmacy.age %></p>
+  <p>性別:<%= user.pharmacy.sex %></p>
+  <p>ご相談内容:<%= pharmacy.counseling %></p>
+  <%= link_to "amazon(医薬品全般)", "http://urx3.nu/Z4qC" %>
+  <h3>おすすめ商品をご案内します！</h3>
+    <% case @pharmacy.sick %>
+    <% when "cough" %>
+    <%= "#{user.pharmacy.nickname}さんはストナプラスジェルSはいかがでしょうか。" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/VpLu" %>
+    <% when "fever" %>
+    <%= "#{user.pharmacy.nickname}さんはルルアタックFXはいかがでしょうか。" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/7OOW" %>
+    <% when "sore_throat" %>
+    <%= "#{user.pharmacy.nickname}さんはルルアタックEXはいかがでしょうか。" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/7OOW" %>
+    <% else %>
+    <%= "不正な値です" %>
+    <% end %>

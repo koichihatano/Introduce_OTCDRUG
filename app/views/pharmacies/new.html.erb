@@ -1,8 +1,8 @@
 <h3>新規情報投稿</h3>
-<%= form_for @pharmacy, method: :post do |f| %>
-<p>ニックネーム:<%= f.text_field :nickname %></p>
-<p>年齢:<%= f.text_field :age %></p>
-<p>性別:<%= f.text_field :sex %></p>
-<p>ご相談内容:<%= f.text_field :counseling %></p>
-<input type="submit" value="送信">
+<% form_with model: @pharmacy, local: true do |form| %>
+<p>ニックネーム:<%= form.text_field :nickname, required: true %>
+<p>年齢:<%= form.text_field :age, required: true %>
+<p>性別:<%= form.text_field :sex, required: true %>
+<p>ご相談内容:<%= form.text_field :counseling, required: true %>
+<%= form.submit "送信" %>
 <% end %>

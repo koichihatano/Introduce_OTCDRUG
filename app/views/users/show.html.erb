@@ -1,24 +1,21 @@
 <p>相談者様詳細情報</p>
-  <% @user.pharmacies.each do |pharmacy| %>
-<p>ニックネーム:<%= pharmacy.nickname %></p>
+  <p>ニックネーム:<%= @user.nickname %></p>
+  <% @pharmacies.each do |pharmacy| %>
   <p>年齢:<%= pharmacy.age %></p>
   <p>性別:<%= pharmacy.sex %></p>
   <p>ご相談内容:<%= pharmacy.counseling %></p>
-<% end %>
-<%= link_to "一覧へ", pharmacies_path %>
+  <% end %>
 <%= link_to "amazon(医薬品全般)", "http://urx3.nu/Z4qC" %>
-<%= link_to "削除", pharmacy_path(@pharmacy.id), method: :delete, data: {confirm: "削除しますか?"} %>
-<%= link_to "編集", edit_pharmcy_path(@pharmacy.id) %>
 <h3>おすすめ商品をご案内します！</h3>
 <% case @pharmacy.sick %>
 <% when "cough" %>
-<%= "#{pharmacy.nickname}さんはストナプラスジェルSはいかがでしょうか。" %>
+<%= "#{user.pharmacy.nickname}さんはストナプラスジェルSはいかがでしょうか。" %>
 <%= link_to "amazonで買う", "http://urx3.nu/VpLu" %>
 <% when "fever" %>
-<%= "#{pharmacy.nickname}さんはルルアタックFXはいかがでしょうか。" %>
+<%= "#{user.pharmacy.nickname}さんはルルアタックFXはいかがでしょうか。" %>
 <%= link_to "amazonで買う", "http://urx3.nu/7OOW" %>
 <% when "sore_throat" %>
-<%= "#{pharmacy.nickname}さんはルルアタックEXはいかがでしょうか。" %>
+<%= "#{user.pharmacy.nickname}さんはルルアタックEXはいかがでしょうか。" %>
 <%= link_to "amazonで買う", "http://urx3.nu/7OOW" %>
 <% else %>
 <%= "不正な値です" %>
