@@ -1,4 +1,5 @@
-<% form_with model: @pharmacy, local: true do |form| %>
+<h3>投稿編集</h3>
+<%= form_with model: @pharmacy, local: true do |form| %>
 <p>ニックネーム:<%= form.text_field :nickname, required: true %>
 <p>年齢:<%= form.text_field :age, required: true %>
 <p>性別:<%= form.text_field :sex, required: true %>

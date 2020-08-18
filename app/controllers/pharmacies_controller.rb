@@ -11,11 +11,14 @@ before_action :correct_user, only: %i[edit update destroy]
     end
 
      def create
-         @pharmacy = pharmacy.new(pharmacy_params)
-         @pharmacy.user_id = current_user.id
-          @pharamacy.save!
-         
-          if @pharmacy.save
+       current_user.pharmacies.create!(pharmacy_params)
+         if current_user.counseling.include?("熱") 
+          　current_user.sick = "fever"
+            current_user.save!
+         else 
+           "大変申し訳ありません。只今メンテナンス中です"
+         end
+        if current_user.save
             flash[:notice] = "登録が完了いたしました"
             redirect_to root_path
          else
@@ -31,15 +34,14 @@ before_action :correct_user, only: %i[edit update destroy]
          redirect_to root_path
     end
 
-    
     def edit
-     end
+    end
 
     def update
         @pharmacy.update!(pharmacy_params)
         if @pharmacy.update(pharmacy_params)
          flash[:notice] = "更新が完了いたしました" 
-         redirect_to @pharmacy
+         redirect_to root_path
         else
          flash.now[:danger] = "更新に失敗しました"
          render 'pharmacies/edit'

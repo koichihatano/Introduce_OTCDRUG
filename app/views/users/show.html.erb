@@ -7,7 +7,7 @@
   <% end %>
 <%= link_to "amazon(医薬品全般)", "http://urx3.nu/Z4qC" %>
 <h3>おすすめ商品をご案内します！</h3>
-<% case @user.sick %>
+<% case current_user.sick %>
 <% when "fever" %>
 <%= "#{pharmacy.nickname}さんはルルアタックFXはいかがでしょうか。" %>
 <%= link_to "amazonで買う", "http://urx3.nu/7OOW" %>
