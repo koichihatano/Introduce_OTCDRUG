@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
       def show
-      @user = User.find(params[:id])
-      @pharmacies = @user.pharmacies
+        @user = User.find(current_user.id)
       end
 end

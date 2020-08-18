@@ -1,4 +1,4 @@
-<h3>お客様一覧</h3>
+ <h3>お客様一覧</h3>
   <% @pharmacies.each do |pharmacy| %>
    <p>ニックネーム:<%= pharmacy.nickname %></p>
    <p>年齢:<%= pharmacy.age %></p>
@@ -6,4 +6,3 @@
   <%= link_to "削除", pharmacy_path(pharmacy), method: :delete, data: {confirm: "削除しますか?"} %>
   <%= link_to "編集", edit_pharmacy_path(pharmacy) %>
   <% end %>
-  
