@@ -10,12 +10,22 @@
   </head>
 
   <body>
+   <body style="background-color: #00FFFF">
    <%= render 'shared/header' %>
    <% flash.each do |flash_type, msg| %>
-    <p style="color: <%= flash_type == 'notice' ? 'green' : 'red' %>;"><%= msg %></p>
-    <hr>
+    <div class="alert alert-<%= flash_type %>" role="alert">
+     <a href="#" class="close" data-dismiss="alert">×</a>
+     <%= msg %>
     <% end %>
-    <%= yield %>
-    <div class="p-3 mb-2 bg-info text-white">©お薬ご提案アプリ2020 powered by koichi hatano</div>
+     
+    <div class="container content">
+　　　</div>
+　　<div class="footer">
+   <div class="container">
+   　<%= yield %>
+   </div>
+　</div>
+　　<div class="p-4 mb-3 bg-info text-white">©お薬ご提案アプリ2020 powered by koichi hatano</div>
   </body>
+ </body>
 </html>

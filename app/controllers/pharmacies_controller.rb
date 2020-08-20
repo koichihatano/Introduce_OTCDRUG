@@ -2,6 +2,8 @@ class PharmaciesController < ApplicationController
 before_action :authenticate_user!
 before_action :correct_user, only: %i[edit update destroy] 
      
+    
+
     def index
        @pharmacies = Pharmacy.includes(:user)
     end
@@ -9,19 +11,13 @@ before_action :correct_user, only: %i[edit update destroy]
     def new
         @pharmacy = Pharmacy.new
     end
-
-     def create
-       current_user.pharmacies.create!(pharmacy_params)
-         if current_user.counseling.include?("熱") 
-          　current_user.sick = "fever"
-            current_user.save!
-         else 
-           "大変申し訳ありません。只今メンテナンス中です"
-         end
+    
+    def create
+     current_user.pharmacies.create!(pharmacy_params)
         if current_user.save
             flash[:notice] = "登録が完了いたしました"
             redirect_to root_path
-         else
+        else
             flash.now[:danger] = "登録に失敗しました"
             render 'pharmacies/new'
         end
@@ -50,7 +46,7 @@ before_action :correct_user, only: %i[edit update destroy]
       private
 
     def pharmacy_params
-        params.require(:pharmacy).permit(:nickname, :age, :sex, :counseling)
+        params.require(:pharmacy).permit(:nickname, :age, :sex, :counseling, :sick) 
     end
     def correct_user
         @pharmacy = current_user.pharmacies.find_by(id: params[:id])

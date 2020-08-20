@@ -1,19 +1,68 @@
-<p>相談者様詳細情報</p>
+ <h3>相談者様詳細</h3>
   <% @user.pharmacies.each do |pharmacy| %>
   <p>ニックネーム:<%= pharmacy.nickname %></p>
   <p>年齢:<%= pharmacy.age %></p>
   <p>性別:<%= pharmacy.sex %></p>
   <p>ご相談内容:<%= pharmacy.counseling %></p>
+  <hr>
   <% end %>
-<%= link_to "amazon(医薬品全般)", "http://urx3.nu/Z4qC" %>
-<h3>おすすめ商品をご案内します！</h3>
-<% case current_user.sick %>
-<% when "fever" %>
-<%= "#{pharmacy.nickname}さんはルルアタックFXはいかがでしょうか。" %>
-<%= link_to "amazonで買う", "http://urx3.nu/7OOW" %>
-<% else %>
-<%= "大変申し訳ありません、只今メンテナンス中です" %>
-<% end %>
 
-
-   
+ <h4>おすすめ商品をご案内します！</h4>
+ <p>尚、都合によりご紹介が難しいこともありますので、予めご了承いただけると幸いです。
+  <br>
+ <p>その場合はリンクからぜひご覧ください</p> 
+  <% @user.pharmacies.each do |pharmacy| %>
+    <% case pharmacy.sick %>
+    <% when "sore_throat" %>
+    <%= "#{pharmacy.nickname}様はルルアタックEXはいかがでしょうか。" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-outline-primary' %>
+    <% when "fever" %>
+    <%= "#{pharmacy.nickname}様はルルアタックFXはいかがでしょうか。" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-outline-primary' %>
+    <% when "cough" %>
+    <%= "#{pharmacy.nickname}様はストナプラスジェルSはいかがでしょうか。
+        こちらのお薬は、気道粘膜をきれいにする効果があるL-カルボシステインという成分と、
+        ジヒドロコデインリン酸、dl-メチルエフェドリン塩酸塩等の咳を抑える効果がある成分
+        が入っており、つらい咳の時に特におすすめです。" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/VpLu", class: 'btn btn-outline-primary' %>
+    <% when "sneeze" %>
+    <%= "#{pharmacy.nickname}様はルルアタックNXはいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/7OOW" %>
+    <% when "headache" %>
+    <%= "#{pharmacy.nickname}様はリングルアイビー200はいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/rYw8" %>
+    <% when "dental_pain" %>
+    <%= "#{pharmacy.nickname}様はリングルアイビー200はいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/rYw8" %>
+    <% when "stomachache" %>
+    <%= "#{pharmacy.nickname}様はパンシロンAZはいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/SuJT" %>
+    <% when "stodginess" %>
+    <%= "#{pharmacy.nickname}様は大正漢方胃腸薬はいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/XGjU" %>
+    <% when "something_rolling_around_in_my_eye" %>
+    <%= "#{pharmacy.nickname}様はロート抗菌目薬はいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx.red/RH5k" %>
+    <% when "stye" %>
+    <%= "#{pharmacy.nickname}様はロート抗菌目薬はいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx.red/RH5k" %>
+    <% when "eyestrain" %>
+    <%= "#{pharmacy.nickname}様はナボリン錠はいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://ur0.work/YRvr" %>
+    <% when "ones_back_hurts" %>
+    <%= "#{pharmacy.nickname}様はボルタレンテープはいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx.blue/ZiLU" %>
+    <% when "shoulder_pain" %>
+    <%= "#{pharmacy.nickname}様はボルタレンゲルはいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx.blue/pSwQ" %>
+    <% when "can_not_sleeping" %>
+    <%= "#{pharmacy.nickname}様はドリエルはいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx.blue/eUwZ" %>
+    <% else %>
+     <br>
+    <%= "#{pharmacy.nickname}様、大変申し訳ありません,喉、熱、咳の症状でお困りでしたら以下のリンクよりご購入のご検討をよろしくお願いいたします" %>
+    <br>
+    <%= link_to "amazon(咳、喉、熱)", "http://u0u0.net/TAuI", class: 'btn btn-outline-primary' %>
+    <%= link_to "amazon(医薬品全般)", "http://urx3.nu/Z4qC", class: 'btn btn-outline-primary' %>
+    <% end %>
+   <% end %>
