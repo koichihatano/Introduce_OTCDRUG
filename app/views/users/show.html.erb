@@ -14,14 +14,16 @@
   <% @user.pharmacies.each do |pharmacy| %>
     <% case pharmacy.sick %>
     <% when "sore_throat" %>
-    <%= "#{pharmacy.nickname}様はルルアタックEXはいかがでしょうか。" %>
+    <%= "#{pharmacy.nickname}様はルルアタックEXはいかがでしょうか。
+         こちらのお薬はイブプロフェンという炎症を抑える成分と、赤みを抑えるトラネキサム酸が
+         入っておりますので、辛い喉の痛みの症状の時おすすめです。" %>
     <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-outline-primary' %>
     <% when "fever" %>
     <%= "#{pharmacy.nickname}様はルルアタックFXはいかがでしょうか。" %>
     <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-outline-primary' %>
     <% when "cough" %>
     <%= "#{pharmacy.nickname}様はストナプラスジェルSはいかがでしょうか。
-        こちらのお薬は、気道粘膜をきれいにする効果があるL-カルボシステインという成分と、
+        こちらのお薬は気道粘膜をきれいにする効果があるL-カルボシステインという成分と、
         ジヒドロコデインリン酸、dl-メチルエフェドリン塩酸塩等の咳を抑える効果がある成分
         が入っており、つらい咳の時に特におすすめです。" %>
     <%= link_to "amazonで買う", "http://urx3.nu/VpLu", class: 'btn btn-outline-primary' %>
@@ -60,7 +62,7 @@
     <%= link_to "amazonで買う", "http://urx.blue/eUwZ" %>
     <% else %>
      <br>
-    <%= "#{pharmacy.nickname}様、大変申し訳ありません,喉、熱、咳の症状でお困りでしたら以下のリンクよりご購入のご検討をよろしくお願いいたします" %>
+    <%= "#{pharmacy.nickname}様大変申し訳ありません、喉、熱、咳の症状でお困りでしたら以下のリンクよりご購入のご検討をよろしくお願いいたします" %>
     <br>
     <%= link_to "amazon(咳、喉、熱)", "http://u0u0.net/TAuI", class: 'btn btn-outline-primary' %>
     <%= link_to "amazon(医薬品全般)", "http://urx3.nu/Z4qC", class: 'btn btn-outline-primary' %>
