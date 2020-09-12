@@ -28,13 +28,14 @@ Column - nickname
        - sex
        - counseling
        - sick
- 　　　　
+<br> 　　　　
 Type   - nickname :string
        - age :integer
        - sex :string
        - counseling :text
        - sick :string
-3. Option - null: false, foreign_key: true
+<br>
+Option - null: false, foreign_key: true
 
 # Association
 - has_many :pharmacies
