@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# タイトル
+**OtcDrug**
+![IMG_4374](https://user-images.githubusercontent.com/66227302/92987045-f7d22580-f4f9-11ea-9f37-32c71272ff55.JPG)
 
-Things you may want to cover:
+# 概要
+- ドラッグストアの店舗販売員として経験したことを活かし、症状に応じた薬の提案を行うアプリを開発
 
-* Ruby version
+# 開発環境
+- Ruby 2.66
+- Ruby on Rails 6.0.0
+- PostgreSQL(DB)
+- Github
+- Visual Studio Code
 
-* System dependencies
+# 実装機能
+- ログイン機能
+- マイページで症状にあった薬の提案表示
+- Bootstrapでナビゲーションバー、背景色、ボタン作成
+- 投稿機能
+- アカウント編集機能
+- 投稿削除機能
 
-* Configuration
+# Pharmaciesテーブル
+1. Column - nickname
+         - age
+         - sex
+         - counseling
+         - sick
+ 　　　　
+2. Type - nickname :string
+       - age :integer
+       - sex :string
+       - counseling :text
+       - sick :string
+3. Option - null: false, foreign_key: true
 
-* Database creation
+# Association
+- has_many :pharmacies
+- belongs_to :user
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
