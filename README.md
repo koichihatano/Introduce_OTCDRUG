@@ -1,7 +1,7 @@
 # README
 
 # タイトル
-**OtcDrug**
+#### OtcDrug
 ![IMG_4374](https://user-images.githubusercontent.com/66227302/92987045-f7d22580-f4f9-11ea-9f37-32c71272ff55.JPG)
 
 # 概要
@@ -23,13 +23,13 @@
 - 投稿削除機能
 
 # Pharmaciesテーブル
-1. Column - nickname
-         - age
-         - sex
-         - counseling
-         - sick
+Column - nickname
+       - age
+       - sex
+       - counseling
+       - sick
  　　　　
-2. Type - nickname :string
+Type   - nickname :string
        - age :integer
        - sex :string
        - counseling :text
