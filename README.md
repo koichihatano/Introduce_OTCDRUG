@@ -23,19 +23,13 @@
 - 投稿削除機能
 
 # Pharmaciesテーブル
-Column - nickname
-       - age
-       - sex
-       - counseling
-       - sick
-<br> 　　　　
-Type   - nickname :string
-       - age :integer
-       - sex :string
-       - counseling :text
-       - sick :string
-<br>
-Option - null: false, foreign_key: true
+| column     | type    | options                        | 
+| ---------- | ------- | ------------------------------ | 
+|  nickname  | string  | null: false, foreign_key: true | 
+| age        | integer | null: false, foreign_key: true | 
+| sex        | string  | null: false, foreign_key: true | 
+| counseling | text    | null: false, foreign_key: true | 
+| sick       | string  | null: false, foreign_key: true | 
 
 # Association
 - has_many :pharmacies
