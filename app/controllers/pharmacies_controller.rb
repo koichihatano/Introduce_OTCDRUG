@@ -1,8 +1,7 @@
 class PharmaciesController < ApplicationController
 before_action :authenticate_user!
 before_action :correct_user, only: %i[edit update destroy] 
-     
-    
+         
 
     def index
        @pharmacies = Pharmacy.includes(:user)
@@ -43,7 +42,8 @@ before_action :correct_user, only: %i[edit update destroy]
          render 'pharmacies/edit'
       end
     end
-      private
+    
+    private
 
     def pharmacy_params
         params.require(:pharmacy).permit(:nickname, :age, :sex, :counseling, :sick) 
