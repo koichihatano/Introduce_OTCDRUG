@@ -1,6 +1,7 @@
 class PharmaciesController < ApplicationController
-         
-
+  before_action :authenticate_user!
+  before_action :correct_user, only: %i[edit update destroy] 
+      
     def index
        @pharmacies = Pharmacy.includes(:user)
     end
@@ -46,5 +47,9 @@ class PharmaciesController < ApplicationController
     def pharmacy_params
         params.require(:pharmacy).permit(:nickname, :age, :sex, :counseling, :sick) 
     end
-    
+
+    def correct_user
+        @pharmacy = current_user.pharmacies.find_by(id: params[:id])
+        redirect_to root_path if @pharmacy.nil?
+    end
 end
