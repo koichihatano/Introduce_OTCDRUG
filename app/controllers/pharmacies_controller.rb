@@ -4,6 +4,7 @@ class PharmaciesController < ApplicationController
       
     def index
        @pharmacies = Pharmacy.includes(:user)
+       @pharmacies = Pharmacy.all.page(params[:page]).per(5)
     end
     
     def new

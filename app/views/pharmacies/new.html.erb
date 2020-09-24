@@ -1,8 +1,10 @@
 <h3>新規情報投稿</h3>
 <%= form_with model: @pharmacy, local: true do |form| %>
-<p>ニックネーム:<%= form.text_field :nickname, required: true %>
-<p>年齢:<%= form.text_field :age, required: true %>
-<p>性別:<%= form.text_field :sex, required: true %>
-<p>ご相談内容:<%= form.text_field :counseling, required: true %>
+ <tbody>
+ <tr><td align="left">ニックネーム:<%= form.text_field :nickname, required: true %></td></tr>
+ <tr><td align="left">年齢:<%= form.text_field :age, required: true %></td></tr>
+ <tr><td align="left">性別:<%= form.text_field :sex, required: true %></td></tr>
+ <tr><td align="left">ご相談内容:<%= form.text_field :counseling, required: true %></td></tr>
 <%= form.submit "送信" %>
 <% end %>
+ </tbody>
