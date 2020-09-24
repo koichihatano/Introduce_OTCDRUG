@@ -21,6 +21,7 @@
 - 投稿機能
 - アカウント編集機能
 - 投稿削除機能
+- ページネーション機能
 
 # Pharmaciesテーブル
 | column     | type    | options                        | 
