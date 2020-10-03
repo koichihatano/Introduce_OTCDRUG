@@ -2,10 +2,16 @@ class PharmaciesController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: %i[edit update destroy] 
       
-    def index
+  PER_PAGE = 5  
+  def index
        @pharmacies = Pharmacy.includes(:user)
-       @pharmacies = Pharmacy.all.page(params[:page]).per(5)
+       @pharmacies = Pharmacy.page(params[:page]).per(PER_PAGE)
+       @q = Pharmacy.ransack(params[:q])
+       @pharmacies = @q.result.page.per(PER_PAGE)
     end
+    
+   
+  
     
     def new
         @pharmacy = Pharmacy.new

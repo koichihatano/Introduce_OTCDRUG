@@ -1,10 +1,66 @@
-  <h3>お客様一覧</h3>
+<h3>お薬ご提案アプリ</h3>
+<h5>いらっしゃいませ、どういった症状でお悩みですか?</h5>
+ <hr>
+   <%= search_form_for @q do |f| %>
+    <%= f.label :counseling_cont, "症状" %>
+    <%= f.search_field :counseling_cont %>
+    <%= f.label :age_eq, "年齢" %>
+    <%= f.search_field :age_eq %>
+    <%= f.label :sex_eq, "性別" %>
+    <%= f.radio_button :sex_cont, '', {:checked => true} %>指定なし
+    <%= f.radio_button :sex_cont, 1 %>男性
+    <%= f.radio_button :sex_cont, 2 %>女性
+    <%= f.submit "検索" %>
+   <% end %>
+  <hr>
    <% @pharmacies.each do |pharmacy| %>
-    <p>ニックネーム:<%= pharmacy.nickname %></p>
     <p>年齢:<%= pharmacy.age %></p>
     <p>性別:<%= pharmacy.sex %></p>
+    <p>症状:<%= pharmacy.counseling%></p></p>
    <%= link_to "削除", pharmacy_path(pharmacy), method: :delete, data: {confirm: "削除しますか?"}, class: 'btn btn-primary' %>
    <%= link_to "編集", edit_pharmacy_path(pharmacy), class: 'btn btn-primary' %>
    <hr>
    <% end %>
   <%= paginate @pharmacies %>
+ <h4>そんなあなたにはこちら！</h4>
+ <% @pharmacies.each do |pharmacy| %>
+    <% case pharmacy.counseling %>
+    <% when "喉が痛い" %>
+    <% "お客様はルルアタックEXはいかがでしょうか。" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-primary' %>
+    <% when "熱がある" %>
+    <%= "お客様はルルアタックFXはいかがでしょうか。" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-primary' %>
+    <% when "咳が止まらない" %>
+    <%= "お客様はストナプラスジェルSはいかがでしょうか。" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/VpLu", class: 'btn btn-primary' %>
+    <% when "鼻水が止まらない" %>
+    <%= "お客様はルルアタックNXはいかがでしょうか。"%>
+    <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-primary' %>
+    <% when "頭痛が治らない" %>
+    <%= "お客様はリングルアイビー200はいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/rYw8", class: 'btn btn-primary' %>
+    <% when "胃が痛い" %>
+    <%= "お客様はパンシロンAZはいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx3.nu/SuJT", class: 'btn btn-primary'%>
+    <% when "ものもらいになっちゃった" %>
+    <%= "お客様はロート抗菌目薬はいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx.red/RH5k", class: 'btn btn-primary' %>
+    <% when "腰が痛い" %>
+    <%= "お客様はボルタレンテープはいかがでしょうか" %>
+    <% link_to "amazonで買う", "http://urx.blue/ZiLU", class: 'btn btn-primary' %>
+    <% when "肩が痛い" %>
+    <%= "お客様はボルタレンゲルはいかがでしょうか" %>
+    <%= link_to "amazonで買う", "http://urx.blue/pSwQ", class: 'btn btn-primary' %>
+    <% else %>
+     <br>
+    <%= "お客様大変申し訳ありません、#{pharmacy.counseling}でお困りでしたら以下の商品等はいかがでしょうか" %>
+    <br>
+    <%= link_to "amazon(咳、喉、熱)", "http://u0u0.net/TAuI", class: 'btn btn-primary btn-sm' %>
+    <%= link_to "amazon(胃薬)", "http://u0u1.net/WYzt", class: 'btn btn-primary btn-sm' %>
+    <%= link_to "amazon(肩・腰)", "http://u0u1.net/QOSm", class: 'btn btn-primary btn-sm' %>
+　　 <%= link_to "amazon(頭痛)", "http://u0u1.net/Zi74", class: 'btn btn-primary btn-sm' %>
+    <%= link_to "amazon(抗菌系目薬)", "http://u0u1.net/EXwj", class: 'btn btn-primary btn-sm' %>
+    <%= link_to "amazon(医薬品全般)", "http://urx3.nu/Z4qC", class: 'btn btn-primary btn-sm' %>
+    <% end %>
+   <% end %>
