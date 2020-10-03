@@ -9,10 +9,7 @@ class PharmaciesController < ApplicationController
        @q = Pharmacy.ransack(params[:q])
        @pharmacies = @q.result.page.per(PER_PAGE)
     end
-    
-   
-  
-    
+
     def new
         @pharmacy = Pharmacy.new
     end
@@ -52,7 +49,7 @@ class PharmaciesController < ApplicationController
     private
 
     def pharmacy_params
-        params.require(:pharmacy).permit(:nickname, :age, :sex, :counseling, :sick) 
+        params.require(:pharmacy).permit(:age, :sex, :counseling, :sick) 
     end
 
     def correct_user
