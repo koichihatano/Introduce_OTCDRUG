@@ -21,7 +21,6 @@
    <%= link_to "編集", edit_pharmacy_path(pharmacy), class: 'btn btn-primary' %>
    <hr>
    <% end %>
-  <%= paginate @pharmacies %>
 
  <% @pharmacies.each do |pharmacy| %>
  <%= "#{pharmacy.counseling}の方にはこちら!" %>
@@ -104,3 +103,4 @@
     <%= link_to "amazon(医薬品全般)", "http://urx3.nu/Z4qC", class: 'btn btn-primary btn-sm' %>
     <% end %>
    <% end %>
+  <%= paginate @pharmacies %>
