@@ -1,7 +1,6 @@
 
 ## タイトル
 #### OtcDrug
-<img width="1438" alt="スクリーンショット 2020-09-17 23 30 26" src="https://user-images.githubusercontent.com/66227302/93486861-9e298b00-f93f-11ea-8c90-d47ec3d1ac43.png">
 
 # 概要
 - ドラッグストアの店舗販売員として経験したことを活かし、症状に応じた薬の提案を行うアプリを開発
