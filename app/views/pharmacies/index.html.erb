@@ -4,26 +4,18 @@
    <%= search_form_for @q do |f| %>
     <%= f.label :counseling_cont, "症状" %>
     <%= f.search_field :counseling_cont %>
-    <%= f.label :age_eq, "年齢" %>
-    <%= f.search_field :age_eq %>
-    <%= f.label :sex_eq, "性別" %>
-    <%= f.radio_button :sex_cont, '', {:checked => true} %>指定なし
-    <%= f.radio_button :sex_cont, 1 %>男性
-    <%= f.radio_button :sex_cont, 2 %>女性
     <%= f.submit "検索" %>
    <% end %>
   <hr>
    <% @pharmacies.each do |pharmacy| %>
-    <p>年齢:<%= pharmacy.age %></p>
-    <p>性別:<%= pharmacy.sex %></p>
     <p>症状:<%= pharmacy.counseling %></p>
    <%= link_to "削除", pharmacy_path(pharmacy), method: :delete, data: {confirm: "削除しますか?"}, class: 'btn btn-primary' %>
    <%= link_to "編集", edit_pharmacy_path(pharmacy), class: 'btn btn-primary' %>
+   <%= link_to "あなたのおすすめはこちら", user_path(current_user.id), class: 'btn btn-primary' %>
    <hr>
    <% end %>
-
- <% @pharmacies.each do |pharmacy| %>
- <%= "#{pharmacy.counseling}の方にはこちら!" %>
+  <h3>お客様のおすすめ商品</h3>
+<% @pharmacies.each do |pharmacy| %>
     <% case pharmacy.counseling %>
     <% when "喉が痛い" %>
     <%= "お客様はルルアタックEXはいかがでしょうか。" %>
@@ -70,7 +62,7 @@
     <% when "胃がもたれる" %>
     <%= "お客様は新セルベール整胃<錠>はいかがでしょうか" %>
     <%= link_to "amazonで買う", "http://ur2.link/GWiM", class: 'btn btn-primary' %>
-    <% when "眼精疲労" %>
+    <% when "眼が疲れる" %>
     <%= "お客様はスマイル40 プレミアムはいかがでしょうか" %>
     <%= link_to "amazonで買う", "http://ur2.link/RODj", class: 'btn btn-primary' %>
     <% when "目が乾く" %>
@@ -93,7 +85,7 @@
     <%= link_to "amazonで買う", "http://ur2.link/D2Wz", class: 'btn btn-primary' %>
     <% else %>
      <br>
-    <%= "お客様大変申し訳ありません、#{pharmacy.counseling}でお困りでしたら以下の商品等はいかがでしょうか" %>
+    <%= "お客様、#{pharmacy.counseling}でお困りでしたら以下の商品等はいかがでしょうか" %>
     <br>
     <%= link_to "amazon(咳、喉、熱)", "http://u0u0.net/TAuI", class: 'btn btn-primary btn-sm' %>
     <%= link_to "amazon(胃薬)", "http://u0u1.net/WYzt", class: 'btn btn-primary btn-sm' %>

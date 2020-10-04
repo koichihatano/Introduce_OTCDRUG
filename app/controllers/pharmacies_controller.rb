@@ -4,12 +4,11 @@ class PharmaciesController < ApplicationController
       
   PER_PAGE = 5  
   def index
-       @pharmacies = Pharmacy.includes(:user)
-       @pharmacies = Pharmacy.page(params[:page]).per(PER_PAGE)
-       @q = Pharmacy.ransack(params[:q])
-       @pharmacies = @q.result.page.per(PER_PAGE)
-    end
-
+    @q = Pharmacy.includes(:user).ransack(params[:q])
+    pharmacies = @q.result(distinct: true)
+    @pharmacies = pharmacies.page(params[:page]).per(PER_PAGE)
+  end
+    
     def new
         @pharmacy = Pharmacy.new
     end
@@ -25,7 +24,6 @@ class PharmaciesController < ApplicationController
         end
      end
     
-
     def destroy
         @pharmacy.destroy!
         flash[:notice] = "削除いたしました"
