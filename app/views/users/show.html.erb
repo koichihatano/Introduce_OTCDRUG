@@ -2,24 +2,14 @@
   <% @user.pharmacies.each do |pharmacy| %>
     <% case pharmacy.disease %>
     <% when "喉が痛い" %>
-     <%= "#{pharmacy.disease}でお悩みでしたら、ルルアタックEXはいかがでしょうか。" %>
-     <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-primary' %>
+     <%= "お客様は#{pharmacy.medical.name}はいかがでしょうか。" %>
     <% when "熱がある" %>
-    <%= "#{pharmacy.disease}でお悩みでしたら、ルルアタックFXはいかがでしょうか。" %>
+    <%= "お客様は#{pharmacy.medical.name}はいかがでしょうか。" %>
     <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-primary' %>
-    <% when "咳が止まらない" %>
-    <%= "お客様はストナプラスジェルSはいかがでしょうか。" %>
-    <%= link_to "amazonで買う", "http://urx3.nu/VpLu", class: 'btn btn-primary' %>
-    <% when "鼻水が止まらない" %>
-    <%= "お客様はルルアタックNXはいかがでしょうか。"%>
-    <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-primary' %>
-    <% when "頭痛が治らない" %>
-
     <% else %>
      <br>
      <%= "お客様、#{pharmacy.disease}でお困りでしたら以下の商品等はいかがでしょうか" %>
     <br>
-     <%= link_to "amazon(咳、喉、熱)", "http://u0u0.net/TAuI", class: 'btn btn-primary btn-sm' %>
       
   <% end %>
  <% end %>
