@@ -51,7 +51,7 @@ class PharmaciesController < ApplicationController
     private
 
     def pharmacy_params
-        params.require(:pharmacy).permit(:age, :sex, :counseling, :disease) 
+        params.require(:pharmacy).permit(:age, :sex, :counseling, :disease).merge(user_id: params[:user_id], pharmacy_id: params[:pharmacy_id], medical_id: params[:medical_id]) 
     end
 
     def correct_user
