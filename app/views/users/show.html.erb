@@ -1,11 +1,11 @@
 <h3>あなたのおすすめはこちら!!</h3>
   <% @user.pharmacies.each do |pharmacy| %>
-    <% case pharmacy.counseling %>
+    <% case pharmacy.disease %>
     <% when "喉が痛い" %>
-     <%= "#{pharmacy.counseling}でお悩みでしたら、ルルアタックEXはいかがでしょうか。" %>
+     <%= "#{pharmacy.disease}でお悩みでしたら、ルルアタックEXはいかがでしょうか。" %>
      <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-primary' %>
     <% when "熱がある" %>
-    <%= "#{pharmacy.counseling}でお悩みでしたら、ルルアタックFXはいかがでしょうか。" %>
+    <%= "#{pharmacy.disease}でお悩みでしたら、ルルアタックFXはいかがでしょうか。" %>
     <%= link_to "amazonで買う", "http://urx3.nu/7OOW", class: 'btn btn-primary' %>
     <% when "咳が止まらない" %>
     <%= "お客様はストナプラスジェルSはいかがでしょうか。" %>
@@ -17,7 +17,7 @@
 
     <% else %>
      <br>
-     <%= "お客様、#{pharmacy.counseling}でお困りでしたら以下の商品等はいかがでしょうか" %>
+     <%= "お客様、#{pharmacy.disease}でお困りでしたら以下の商品等はいかがでしょうか" %>
     <br>
      <%= link_to "amazon(咳、喉、熱)", "http://u0u0.net/TAuI", class: 'btn btn-primary btn-sm' %>
       
