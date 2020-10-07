@@ -1,6 +1,6 @@
 class Pharmacy < ApplicationRecord
   belongs_to :user
-  validates :counseling, presence: true, length: { maximum: 140 }
   has_many :user_pharmacies, dependent: :destroy
   has_many :users, through: :user_pharmacies
+  has_many :medicals, dependent: :destroy
 end
