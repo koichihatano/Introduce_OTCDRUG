@@ -1,4 +1,5 @@
 class MedicalsController < ApplicationController
+    
     def create
         medical.pharmacies.name = "ルルアタックFX"
         medical.pharamacies.name.save!

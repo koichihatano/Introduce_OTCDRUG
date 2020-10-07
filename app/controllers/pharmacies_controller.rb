@@ -14,7 +14,7 @@ class PharmaciesController < ApplicationController
     end
     
     def create
-     current_user.pharmacies.create!(pharmacy_params)
+     current_user.pharmacies.new(pharmacy_params)
      current_user.pharmacies.disease = "熱がある"
      current_user.pharmacies.disease.save!
 
