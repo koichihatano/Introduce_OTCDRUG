@@ -1,7 +1,7 @@
 class MedicalsController < ApplicationController
     
     def create
-        medical = medical.new(medical_params)
+        medical = medical.new!(medical_params)
         medical.pharmacies.name = "ルルアタックFX"
         medical.pharamacies.name.save!
         medical.pharmacies.url = "http://urx3.nu/7OOW"
