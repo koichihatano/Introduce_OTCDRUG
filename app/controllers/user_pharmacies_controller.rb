@@ -22,6 +22,6 @@ class UserPharmaciesController < ApplicationController
 private
 
     def user_pharmacy_params
-        params.require(:user_pharmacy).require(:disease, :user_id, :pharmacy_id)
+        params.require(:user_pharmacy).permit(:disease, :user_id, :pharmacy_id)
     end
 end

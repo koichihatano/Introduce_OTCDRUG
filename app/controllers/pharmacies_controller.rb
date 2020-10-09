@@ -17,7 +17,9 @@ class PharmaciesController < ApplicationController
      current_user.pharmacies.create!(pharmacy_params)
      current_user.pharmacies.disease = "熱がある"
      current_user.pharmacies.disease.save!
-
+     current_user.pharmacies.disease.name = "ルルアタックFX"
+     current_user.pharmacies.disease.url = "http://urx3.nu/7OOW"
+     current_user.pharmacies.disease.save!
      if current_user.save
             flash[:notice] = "登録が完了いたしました"
             redirect_to root_path
@@ -51,7 +53,7 @@ class PharmaciesController < ApplicationController
     private
 
     def pharmacy_params
-        params.require(:pharmacy).permit(:age, :sex, :counseling, :disease).merge(user_id: params[:user_id], pharmacy_id: params[:pharmacy_id], medical_id: params[:medical_id]) 
+        params.require(:pharmacy).permit(:age, :sex, :counseling, :disease)
     end
 
     def correct_user

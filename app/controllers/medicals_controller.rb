@@ -8,10 +8,7 @@ class MedicalsController < ApplicationController
         medival.pharmacies.url.save!
     end
   
-
-
-
-    private
+  private
 
     def medical_params
         params.require(:medical).permit(:name, :url)
