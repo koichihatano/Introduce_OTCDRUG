@@ -5,7 +5,7 @@ class MedicalsController < ApplicationController
         medical.name = "ルルアタックFX"
         medical.name.save!
         medical.url = "http://urx3.nu/7OOW"
-        medival.url.save!
+        medical.url.save!
     end
   
   private

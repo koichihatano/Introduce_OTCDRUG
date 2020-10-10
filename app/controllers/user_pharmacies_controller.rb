@@ -1,28 +1,27 @@
-class PharmaciesController < ApplicationController
+class UserPharmaciesController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: %i[edit update destroy] 
       
   PER_PAGE = 5  
   def index
-    @q = User_Pharmacy.includes(:user).ransack(params[:q])
+    @q = UserPharmacy.includes(:user).ransack(params[:q])
     user_pharmacies = @q.result(distinct: true)
     @user_pharmacies = user_pharmacies.page(params[:page]).per(PER_PAGE)
   end
     
     def new
-        @user_pharmacy = User_Pharmacy.new
+        @user_pharmacy = UserPharmacy.new
     end
     
     def create
-     user_pharmacies.create!(pharmacy_params)
-    if @user_pharmacies.counseling.include? ("熱がある")
-       @user_pharmacies.counseling.save!
+       userpharmacy.create!(userpharmacy_params)
+    if @userpharmacy.counseling.include? ("熱がある")
+       @userpharmacy.counseling.save!
     else
        "登録できません"
     end
     
-    
-     if user_pharmacy.save
+     if userpharmacy.save
             flash[:notice] = "登録が完了いたしました"
             redirect_to root_path
         else
@@ -32,7 +31,7 @@ class PharmaciesController < ApplicationController
      end
       
     def destroy
-        @user_pharmacy.destroy!
+        @userpharmacy.destroy!
         flash[:notice] = "削除いたしました"
          redirect_to root_path
     end
@@ -41,8 +40,8 @@ class PharmaciesController < ApplicationController
     end
 
     def update
-      @user_pharmacy.update!(pharmacy_params)
-       if @user_pharmacy.update(pharmacy_params)
+      @userpharmacy.update!(userpharmacy_params)
+       if @userpharmacy.update(userpharmacy_params)
           flash[:notice] = "更新が完了いたしました" 
           redirect_to root_path
        else
@@ -53,12 +52,12 @@ class PharmaciesController < ApplicationController
     
     private
 
-    def pharmacy_params
-        params.require(:user_pharmacy).permit(:counseling, :user_id, :pharmacy_id)
+    def userpharmacy_params
+        params.require(:userpharmacy).permit(:counseling, :user_id, :pharmacy_id)
     end
 
     def correct_user
-        @pharmacy = user.pharmacies.find_by(id: params[:id])
-        redirect_to root_path if @user_pharmacy.nil?
+        @user_pharmacy = user_pharmacies.find_by(id: params[:id])
+        redirect_to root_path if @userpharmacy.nil?
     end
 end
