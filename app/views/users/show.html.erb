@@ -1,13 +1,11 @@
 <h3>あなたのおすすめはこちら!!</h3>
-  <% @user.pharmacies.each do |pharmacy| %>
-    <% case pharmacy.disease %>
-    <% when "喉が痛い" %>
-     <%= "お客様は#{pharmacy.disease.name}はいかがでしょうか。" %>
+  <% @user_pharmacies.each do |user_pharmacy| %>
+    <% case user_pharmacy %>
     <% when "熱がある" %>
-    <%= "お客様は#{pharmacy.disease.name}はいかがでしょうか。" %>
+    <%= "お客様は#{pharmacy.name}はいかがでしょうか。" %>
     <% else %>
      <br>
-     <%= "お客様、#{pharmacy.counseling}でお困りでしたら以下の商品等はいかがでしょうか" %>
+     <%= "お客様、#{user_pharmacy.counseling}でお困りでしたら以下の商品等はいかがでしょうか" %>
     <br>
      <%= link_to "amazon(咳、喉、熱)", "http://u0u0.net/TAuI", class: 'btn btn-primary btn-sm' %>
       

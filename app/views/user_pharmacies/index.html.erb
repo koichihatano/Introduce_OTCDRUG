@@ -1,0 +1,14 @@
+<h3>お薬ご提案アプリ</h3>
+<h5>いらっしゃいませ、どういった症状でお悩みですか?</h5>
+ <hr>
+   <%= search_form_for @q do |f| %>
+    <%= f.label :counseling_cont, "症状" %>
+    <%= f.search_field :counseling_cont %>
+    <%= f.submit "検索" %>
+   <% end %>
+  <hr>
+   <% @user_pharmacies.each do |user_pharmacy| %>
+    <p>症状:<%= user_pharmacy.counseling %></p>
+   <%= link_to "削除", user_pharmacy_path(user_pharmacy), method: :delete, data: {confirm: "削除しますか?"}, class: 'btn btn-primary' %>
+   <%= link_to "編集", edit_user_pharmacy_path(user_pharmacy), class: 'btn btn-primary' %>
+   <%= link_to "あなたのおすすめはこちら", user_path(current_user.id), class: 'btn btn-primary' %>

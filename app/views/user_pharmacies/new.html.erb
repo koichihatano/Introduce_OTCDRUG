@@ -1,0 +1,30 @@
+<div class="d-flex align-items-center">
+  <h3>新規情報投稿</h3>
+  <div class="ml-auto posts_button">
+      
+  </div>
+</div>
+  <%= form_with model: @user_pharmacy, local: true do |form| %>
+    <div class="form-group">
+        <%= form.label :age, '年齢' %>
+        <%= form.text_field :age, class: 'form-control' %>
+        <small id="title-tip" class="form-text text-muted">
+            年齢を入力してください。
+        </small>
+    </div>
+    <div class="form-group">
+        <%= form.label :sex, '性別' %>
+        <%= form.text_field :sex, class: 'form-control' %>
+        <small id="title-tip" class="form-text text-muted">
+            性別を入力してください。 
+        </small>
+    </div>
+    <div class="form-group">
+        <%= form.label :counseling, 'ご相談内容' %>
+        <%= form.text_area :counseling, class: 'form-control', rows:10 %>
+        <small id="content-tip" class="form-text text-muted">
+            ご相談内容を入力してください。
+        </small>
+    </div>
+    <%= form.submit '投稿', class: 'btn btn-info btn-block' %>
+<% end %>
