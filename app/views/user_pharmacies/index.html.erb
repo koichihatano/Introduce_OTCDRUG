@@ -7,7 +7,7 @@
     <%= f.submit "検索" %>
    <% end %>
   <hr>
-   <% @userpharmacies.each do |userpharmacy| %>
+   <% @user_pharmacies.each do |userpharmacy| %>
     <p>症状:<%= userpharmacy.counseling %></p>
     <%= link_to "削除", user_pharmacy_path(userpharmacy), method: :delete, data: {confirm: "削除しますか?"}, class: 'btn btn-primary' %>
     <%= link_to "編集", edit_user_pharmacy_path(userpharmacy), class: 'btn btn-primary' %>

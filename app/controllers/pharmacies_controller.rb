@@ -5,9 +5,9 @@ class PharmaciesController < ApplicationController
     end
     
     def create
-      pharmacies.create!(pharmacy_params)
-      pharmacies.disease = "熱がある"
-      pharmacies.disease.save!
+      pharmacy = Pharmacy.create!(pharmacy_params)
+      pharmacy.disease = "熱がある"
+      pharmacy.disease.save!
     end
       
     private
