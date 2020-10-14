@@ -1,5 +1,6 @@
 class PharmaciesController < ApplicationController
 
+   before_action :set_pharmacy
     def new
         @pharmacy = Pharmacy.new
     end
@@ -16,4 +17,7 @@ class PharmaciesController < ApplicationController
         params.require(:pharmacy).permit(:disease, :medical_id)
     end
 
+    def set_pharmacy
+      @pharmacy = pharmacy.find([:id])
+    end
 end

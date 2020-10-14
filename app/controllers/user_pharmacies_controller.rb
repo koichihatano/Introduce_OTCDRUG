@@ -1,6 +1,5 @@
 class UserPharmaciesController < ApplicationController
   before_action :correct_user, only: %i[edit update destroy] 
-  before_action :set_pharmacy, only: [:create, :destroy]
   PER_PAGE = 5  
   def index
     @q = UserPharmacy.includes(:user).ransack(params[:q])
@@ -65,7 +64,5 @@ class UserPharmaciesController < ApplicationController
         redirect_to root_path if @userpharmacy.nil?
     end
     
-    def set_pharmacy
-      @pharmacy = Pharmacy.find(params[:pharmacy_id])
-    end
+    
 end

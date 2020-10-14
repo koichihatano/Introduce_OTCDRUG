@@ -1,17 +1,8 @@
 <h3>お客様詳細</h3>
-<% @user.mypages.each do |mypage| %>
-<p>年齢:<%= mypage.age %></p>
-<p>性別:<%= mypage.sex %></p>
-<p>ご相談内容:<%= mypage.counseling %></p>
+<p>年齢:<%= current_user.age %></p>
+<p>性別:<%= current_user.sex %></p>
+<p>ご相談内容:<%= current_user.counseling %>
 <br>
-<% end %>
-<h3>あなたのおすすめはこちら!!</h3>
-  <% @user.mypages.each do |mypage| %>
-    <% case mypage.counseling %>
-    <% when "熱がある" %>
-    <%= "お客様は#{medical.name}はいかがでしょうか。" %>
-    <% else %>
-     <br>
-     <%= "大変申し訳ありません。只今メンテナンス中です" %>
-  <% end %>
- <% end %>
+
+
+
