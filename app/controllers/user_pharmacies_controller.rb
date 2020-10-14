@@ -14,7 +14,7 @@ class UserPharmaciesController < ApplicationController
     def create
       @user_pharmacy = UserPharmacy.create!(userpharmacy_params)
       @user_pharmacy.user_id = current_user.id
-      @user_pharmacy.phamacy_id = pharmacy_id
+      @user_pharmacy.phamacy_id = current_user.pharmacy_id
       if @user_pharmacy.counseling.include? ("熱がある")
        @user_pharmacy.counseling.save!
     else

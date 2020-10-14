@@ -1,8 +1,11 @@
 <h3>お客様詳細</h3>
 <p>年齢:<%= current_user.age %></p>
 <p>性別:<%= current_user.sex %></p>
-<p>ご相談内容:<%= current_user.counseling %>
 <br>
-
-
-
+<% current_user.pharmacies.each do |pharmacy| %>
+ <%= pharmacy.disease %>
+ <%= pharmacy.medicals.each do |medical| %>
+  <%= pharmacy.medical.name %>
+  <%= pharmacy.medical.url %>
+ <% end %>
+<% end %>
